@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../redux/userSlice";
 import { APP_LOGO } from "../utils/constants";
+import { toggleGPTSearchView } from "../redux/gptSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -42,7 +43,6 @@ const Header = () => {
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
-        console.log("signed out successfully");
         navigate("/");
       })
       .catch((error) => {
@@ -50,11 +50,21 @@ const Header = () => {
       });
   };
 
+  const handleGPTToggle = () => {
+    dispatch(toggleGPTSearchView());
+  };
+
   return (
     <div className="flex px-4 shadow items-center shadow-black w-screen justify-between z-10 absolute">
       <img className="w-40 z-10 " src={APP_LOGO} alt="logo" />
       {user && (
         <div>
+          <button
+            className="rounded-lg text-white bg-purple-600 py-2 px-4 mr-2 font-bold"
+            onClick={handleGPTToggle}
+          >
+            GPT SERACH
+          </button>
           <button
             className="text-white font-bold text-lg"
             onClick={handleSignOut}

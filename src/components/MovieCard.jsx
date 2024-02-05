@@ -2,7 +2,6 @@ import React from "react";
 import { TMDB_IMAGE_URL } from "../utils/constants";
 
 const MovieCard = ({ movie }) => {
-  console.log(movie);
   const { original_title, poster_path } = movie;
   return (
     <div className="w-48 mr-4">
