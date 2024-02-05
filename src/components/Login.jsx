@@ -8,7 +8,6 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/userSlice";
 
@@ -20,7 +19,6 @@ const Login = () => {
   const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleSignInUpChange = () => {
@@ -28,10 +26,9 @@ const Login = () => {
   };
 
   const handleFormSubmit = () => {
-    console.log(email, password);
     setEmailErrorMsg(validateEmail(email.current.value));
     setPasswordErrorMsg(validatePassword(password.current.value));
-    console.log(emailErrorMsg, passwordErrorMsg, isSignInForm);
+
     if (emailErrorMsg || passwordErrorMsg) return;
 
     if (isSignInForm) {
@@ -44,8 +41,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log("user", user);
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -62,7 +57,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          console.log(user);
+
           updateProfile(user, {
             displayName: name.current.value,
             photoURL: "https://example.com/jane-q-user/profile.jpg",
@@ -84,12 +79,10 @@ const Login = () => {
               // An error occurred
               // ...
             });
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode, "--", errorMessage);
           setErrorMsg(errorCode + " -- ", errorMessage);
         });
     }
