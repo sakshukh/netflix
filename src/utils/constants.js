@@ -27,3 +27,9 @@ export const TMDB_IMAGE_URL = "https://image.tmdb.org/t/p/w300/";
 
 export const BG_IMAGE =
   "https://assets.nflxext.com/ffe/siteui/vlv3/a09bb938-2d90-42ae-986e-5a3e4abf9e77/8eb1e781-3494-4aa4-9405-268ca6473e4c/IN-en-20231113-popsignuptwoweeks-perspective_alpha_website_large.jpg";
+
+export const languageConstants = [
+  { identifier: "en", name: "English" },
+  { identifier: "hindi", name: "Hindi" },
+  { identifier: "spanish", name: "Spanish" },
+];
