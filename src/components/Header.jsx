@@ -62,14 +62,14 @@ const Header = () => {
   };
 
   return (
-    <div className="flex px-4 shadow items-center shadow-black w-screen justify-between z-10 absolute">
+    <div className="flex flex-col px-4 shadow items-center shadow-black w-screen justify-between z-10 absolute md:flex-row bg-black">
       <img className="w-40 z-10 " src={APP_LOGO} alt="logo" />
       {user && (
-        <div>
+        <div className="flex flex-col md:flex-row items-center">
           <select
             name=""
             id=""
-            className="mr-3 py-2 bg-black text-white focus:outline-none"
+            className="mr-3 py-2 bg-black text-white focus:outline-none mb-2"
             onChange={handleLanguageChange}
           >
             {languageConstants.map((lang) => (
@@ -83,7 +83,7 @@ const Header = () => {
             ))}
           </select>
           <button
-            className="rounded-lg text-white bg-purple-600 py-2 px-4 mr-2 font-bold"
+            className="rounded-lg text-white bg-purple-600 py-2 px-4 mr-2 font-bold mb-2"
             onClick={handleGPTToggle}
           >
             {!showGPTSearch ? "GPT SERACH" : "HOME PAGE"}

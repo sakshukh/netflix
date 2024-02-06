@@ -55,7 +55,7 @@ const GPTSearchInputBar = () => {
 
   return (
     <form
-      className="z-10 grid grid-cols-12 text-white w-[50%] mx-auto"
+      className="z-10 grid grid-cols-12 text-white md:w-[50%] mx-auto w-full p-2"
       onSubmit={(e) => e.preventDefault()}
     >
       <input
